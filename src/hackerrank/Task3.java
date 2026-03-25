@@ -7,8 +7,8 @@ public class Task3 {
   static int count_fruits(int l, int r, int c, List<Integer> fs) {
     int count = 0;
     for (int f: fs) {
-      int position = c + f;
-      if (position >= l && position <= r) count++;
+      int pos = c + f;
+      if (pos >= l && pos <= r) count++;
     }
     return count;
   }
