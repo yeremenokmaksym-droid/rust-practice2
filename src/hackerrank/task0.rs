@@ -1,16 +1,16 @@
 // https://www.hackerrank.com/challenges/simple-array-sum/problem
-fn simple_array_sum(aa: &[i32]) -> i32 {
-    let mut x: i32 = 0;
-    for a in aa {
-        x += a
-    }
-    x
-}
+using System;
 
-#[test]
-fn test0() {
-    let aa = vec![10, 11, 12];
-    let real = simple_array_sum(&aa);
-    let expected = 10 + 11 + 12;
-    assert_eq!(real, expected);
+class Solution { static void Main() { int n = int.Parse(Console.ReadLine());
+
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 0; j < n - i; j++)
+            Console.Write(" ");
+
+        for (int j = 0; j < i; j++)
+            Console.Write("#");
+
+        Console.WriteLine();
+    }
 }
