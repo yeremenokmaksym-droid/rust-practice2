@@ -1,16 +1,14 @@
-// https://www.hackerrank.com/challenges/simple-array-sum/problem
 using System;
 
-class Solution { static void Main() { int n = int.Parse(Console.ReadLine());
-
-    for (int i = 1; i <= n; i++)
+class Solution
+{
+    static void Main()
     {
-        for (int j = 0; j < n - i; j++)
-            Console.Write(" ");
+        int n = int.Parse(Console.ReadLine());
 
-        for (int j = 0; j < i; j++)
-            Console.Write("#");
-
-        Console.WriteLine();
+        for (int i = 1; i <= n; i++)
+        {
+            Console.WriteLine(new string('#', i).PadLeft(n));
+        }
     }
 }
