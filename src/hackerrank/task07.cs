@@ -1,111 +1,113 @@
-/#include <bits/stdc++.h >
+#include <bits/stdc++.h>
 
-використання простору імен std;
+using namespace std;
 
-рядок ltrim ( const рядок & ) ;
-рядок rtrim ( const рядок & ) ;
-вектор<рядок> split ( const рядок & ) ;
+string ltrim(const string &);
+string rtrim(const string &);
+vector<string> split(const string &);
 
 /*
- * Виконайте функцію «breakingRecords» нижче.
+ * Complete the 'breakingRecords' function below.
  *
- * Очікується, що функція поверне цілочисельне число типу INTEGER_ARRAY.
- * Функція приймає значення INTEGER_ARRAY як параметр.
+ * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER_ARRAY scores as parameter.
  */
 
-vector <int> breakingRecords ( vector <int> результати ) {
-    int max_record = результати [ 0 ] ;
-    int min_record = результати [ 0 ] ;
-    int count_max = 0 ;
-    int count_min = 0 ;
+vector<int> breakingRecords(vector<int> scores) {
+    int max_record = scores[0];
+    int min_record = scores[0];
+    int count_max = 0;
+    int count_min = 0;
 
-    для ( size_t i = 1 ; i < scores.size ( ) ; i++ ) {
-        якщо ( оцінки [ i ] > max_record ) {
-            max_record = результати [ i ] ;
+    for (size_t i = 1; i < scores.size(); i++) {
+        if (scores[i] > max_record) {
+            max_record = scores[i];
             count_max++;
-        } інакше якщо ( оцінки [ i ] < хв_запис ) {
-            min_record = бали [ i ] ;
-            кількість_хв++;
+        } else if (scores[i] < min_record) {
+            min_record = scores[i];
+            count_min++;
         }
     }
 
-    повернути { максимальна_кількість, мінімальна_кількість } ;
+    return {count_max, count_min};
 }
 
-головне ціле ( )
+int main()
 {
-    ofstream fout ( getenv ( "OUTPUT_PATH" ) ) ;
+    ofstream fout(getenv("OUTPUT_PATH"));
 
-    рядок n_temp;
-    отримати_лінію ( cin, n_temp ) ;
+    string n_temp;
+    getline(cin, n_temp);
 
-    int n = stoi ( ltrim ( rtrim ( n_temp ) ) ) ;
+    int n = stoi(ltrim(rtrim(n_temp)));
 
-    рядок scores_temp_temp;
-    отримати_лінію ( cin, scores_temp_temp ) ;
+    string scores_temp_temp;
+    getline(cin, scores_temp_temp);
 
-    вектор<рядок> scores_temp = split ( rtrim ( scores_temp_temp ) ) ;
+    vector<string> scores_temp = split(rtrim(scores_temp_temp));
 
-    вектор <int> оцінки ( n ) ;
+    vector<int> scores(n);
 
-    для ( int i = 0 ; i < n ; i++ ) {
-        int scores_item = stoi ( scores_temp [ i ] ) ;
+    for (int i = 0; i < n; i++) {
+        int scores_item = stoi(scores_temp[i]);
 
-        бали [ i ] = бали_елемент;
+        scores[i] = scores_item;
     }
 
-    вектор<int> результат = breakingRecords ( результати ) ;
+    vector<int> result = breakingRecords(scores);
 
-    для ( size_t i = 0 ; i < result.size ( ) ; i++ ) {
-        fout << результат [ i ] ;
+    for (size_t i = 0; i < result.size(); i++) {
+        fout << result[i];
 
-        якщо ( i != результат.розмір ( ) - 1 ) {
-            fout << " " ;
+        if (i != result.size() - 1) {
+            fout << " ";
         }
     }
 
-    fout << "\n" ;
+    fout << "\n";
 
-    fout.close ( ) ;
+    fout.close();
 
-    повернути 0 ;
+    return 0;
 }
 
-рядок ltrim ( const рядок &str ) {
-    рядок s ( str ) ;
+string ltrim(const string &str) {
+    string s(str);
 
-    s.erase (
-        s.begin ( ) ,
-        find_if ( s.begin ( ) , s.end ( ) , not1 ( ptr_fun< int , int > ( isspace ) ) )
-    ) ;
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
 
-    повернення ;
+    return s;
 }
 
-рядок rtrim ( const рядок &str ) {
-    рядок s ( str ) ;
+string rtrim(const string &str) {
+    string s(str);
 
-    s.erase (
-        find_if ( s.rbegin ( ) , s.rend ( ) , not1 ( ptr_fun< int , int > ( isspace ) ) ) . base ( ) ,
-        кінець ( )
-    ) ;
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
 
-    повернення ;
+    return s;
 }
 
-вектор<рядок> split ( const рядок &str ) {
-    vector<рядок> токени;
+vector<string> split(const string &str) {
+    vector<string> tokens;
 
-    string::size_type початок = 0 ;
-    рядок::тип_розміру кінець = 0 ;
+    string::size_type start = 0;
+    string::size_type end = 0;
 
-    поки ( ( кінець = str.find ( " " , початок ) ) != string::npos ) {
-        tokens.push_back ( str.substr ( початок, кінець - початок ) ) ;
+    while ((end = str.find(" ", start)) != string::npos) {
+        tokens.push_back(str.substr(start, end - start));
 
-        початок = кінець + 1 ;
+        start = end + 1;
     }
 
-    токени.push_back ( str.substr ( початок ) ) ;
+    tokens.push_back(str.substr(start));
 
-    повернення токенів;
+    return tokens;
 }
+
+```
